@@ -8,12 +8,10 @@ jobs:
     runs-on: ubuntu-16.04
     name: Test changed markdown documentation files.
     steps:
-      - name: Checkout PR
+      - uses: actions/checkout@v1
+      - name: Info
         run: |
-          git clone https://github.com/vbardiovskyg/testing-repository.git
-          cd testing-repository
-          git fetch origin +${GITHUB_SHA}:${GITHUB_REF} --update-head-ok
-          git checkout ${GITHUB_REF}
+          echo $(git diff origin)
       - name: Run on changed files
         run: |
           git diff origin --name-only | xargs ./tools/run-on-files.py
