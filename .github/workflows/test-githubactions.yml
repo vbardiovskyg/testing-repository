@@ -11,6 +11,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Info
         run: |
+          echo $(git status)
+          echo $(git branch)
           echo $(git diff origin)
       - name: Run on changed files
         run: |
