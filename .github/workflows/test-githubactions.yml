@@ -1,0 +1,17 @@
+name: Test CI
+
+on:
+  pull_request:
+  
+jobs:
+  test-changed-md-files:
+    name: Test changed markdown documentation files.
+    steps:
+      - name: Checkout PR
+        run: |
+          git clone https://github.com/vbardiovskyg/testing-repository.git
+          git fetch origin +${GITHUB_SHA}:${GITHUB_REF} --update-head-ok
+          git checkout ${GITHUB_REF}
+      - name: Run on changed files
+        run: |
+          git diff origin --name-only | xargs ./tools/run-on-files.py
