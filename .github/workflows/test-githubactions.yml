@@ -15,7 +15,7 @@ jobs:
           echo $(git status)
           echo $(git branch)
           echo $(git remote)
-          echo $(git diff origin)
+          echo $(git diff origin/master)
       - name: Run on changed files
         run: |
           git diff master --name-only | xargs ./tools/run-on-files.py
