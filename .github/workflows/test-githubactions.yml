@@ -9,13 +9,13 @@ jobs:
     name: Test changed markdown documentation files.
     steps:
       - uses: actions/checkout@v1
-      - name: Info
+      - name: Debug information
         run: |
           echo $(git log)
           echo $(git status)
           echo $(git branch)
           echo $(git remote)
-          echo $(git diff origin/master)
+          echo $(git diff origin/master --name-only)
       - name: Run on changed files
         run: |
-          git diff master --name-only | xargs ./tools/run-on-files.py
+          git diff origin/master --name-only | xargs ./tools/run-on-files.py
