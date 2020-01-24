@@ -18,4 +18,4 @@ jobs:
           echo $(git diff origin/master --name-only)
       - name: Run on changed files
         run: |
-          git diff origin/master --name-only | xargs ./tools/run-on-files.py
+          git diff origin/master --name-only | xargs python2.7 ./tools/run-on-files.py
