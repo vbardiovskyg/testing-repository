@@ -12,6 +12,7 @@ jobs:
       - name: Install packages
         run: |
           pip install absl-py
+          pip install tensorflow
           pip freeze all
       - name: Debug information
         run: |
