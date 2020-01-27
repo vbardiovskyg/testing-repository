@@ -16,6 +16,9 @@ jobs:
           echo $(git branch)
           echo $(git remote)
           echo $(git diff origin/master --name-only)
-      - name: Run on changed files
+      - name: Run mock script changed files
         run: |
           git diff origin/master --name-only | xargs python2.7 ./tools/run-on-files.py
+      - name: Run validator on changed files
+        run: |
+          git diff origin/master --name-only | xargs python2.7 ./tools/validator.py
